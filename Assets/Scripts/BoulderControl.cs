@@ -6,29 +6,29 @@ public class BoulderControl : MonoBehaviour
 {
 
     public GameObject boulder;
+    public GameObject spawnedBoulder;
 
     // Update is called once per frame
     void Update()
     {
-        //if you press left arrow, spawner moves left
+        //controlls spawner movement from left to right
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.Translate(1, 0, 0);
+            transform.Translate(1f, 0f, 0f);
 
         }
 
-
-        //if you press right assrom, spawner moves right
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.Translate(-1, 0, 0);
+            transform.Translate(-1f, 0f, 0f);
         }
 
-        //if you press space, you will create a boulder
+        //when spacebar is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject newBoulder = Instantiate(boulder);
-            newBoulder.transform.position = transform.position;
+            Destroy(spawnedBoulder);
+            spawnedBoulder = Instantiate(boulder);
+            spawnedBoulder.transform.position = transform.position;
         }
 
     }
